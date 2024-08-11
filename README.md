@@ -16,11 +16,16 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 ## Topics
 
 <!-- toc starts -->
-
+- [Contributing TILs](#contributing-tils)
 <!-- toc ends -->
 
 ## Index
 
 <!-- index starts -->
+### Contributing TILs
 
+- [How to contribute a TIL](_contributing-TILs/_how-to-contribute.md) - 2024-08-11
+- [How to commit and push without GitHub Actions from running](_contributing-TILs/prevent-GitHub-actions.md) - 2024-08-11
+- [How to preview the `README.md` locally](_contributing-TILs/preview-README.md) - 2024-08-11
+- [How to push/pull without conflicts](_contributing-TILs/avoiding-conflicts.md) - 2024-08-11
 <!-- index ends -->
