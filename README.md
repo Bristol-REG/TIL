@@ -5,7 +5,7 @@ This repo contains TILs from the team at the [Jean Golding Institute](https://ww
 > [!TIP]  
 > TIL stands for "today I learned". We constantly learn new things that would be useful for others (including our future self!) to see.
 
-[We welcome contributions](#contributing) from the community.
+[We welcome contributions](#contributing-tils) from the community.
 
 TILs are public domain ([CC0](LICENSE)) unless otherwise noted. Any referenced content may have its own license.
 
