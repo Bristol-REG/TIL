@@ -1,0 +1,6 @@
+# Common ignored files and directories
+DS_Store
+Thumbs.db
+.vscode
+__pycache__
+.venv
