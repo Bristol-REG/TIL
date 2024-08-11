@@ -18,6 +18,7 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 <!-- toc starts -->
 - [Contributing TILs](#contributing-tils)
 - [Github](#github)
+- [Python](#python)
 <!-- toc ends -->
 
 ## Index
@@ -33,4 +34,8 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 ### Github
 
 - [Adding alerts and notes to GitHub markdown](GitHub/alerts-and-notes-in-markdown.md) - 2024-08-11
+
+### Python
+
+- [Python decorators (the @things before functions)](Python/decorators.md) - 2024-08-11
 <!-- index ends -->
