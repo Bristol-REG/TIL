@@ -17,6 +17,7 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 
 <!-- toc starts -->
 - [Contributing TILs](#contributing-tils)
+- [GitHub](#github)
 <!-- toc ends -->
 
 ## Index
@@ -28,4 +29,8 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 - [How to commit and push without GitHub Actions from running](_contributing-TILs/prevent-GitHub-actions.md) - 2024-08-11
 - [How to preview the `README.md` locally](_contributing-TILs/preview-README.md) - 2024-08-11
 - [How to push/pull without conflicts](_contributing-TILs/avoiding-conflicts.md) - 2024-08-11
+
+### GitHub
+
+- [Adding alerts and notes to GitHub markdown](GitHub/alerts-and-notes-in-markdown.md) - 2024-08-11
 <!-- index ends -->
