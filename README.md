@@ -17,6 +17,7 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 
 <!-- toc starts -->
 - [Contributing TILs](#contributing-tils)
+- [Git](#git)
 - [GitHub](#github)
 - [Python](#python)
 <!-- toc ends -->
@@ -31,12 +32,19 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 - [How to preview the `README.md` locally](_contributing-TILs/preview-README.md) - 2024-08-11
 - [How to push/pull without conflicts](_contributing-TILs/avoiding-conflicts.md) - 2024-08-11
 
+### Git
+
+- [Commonly used commands in Git](Git/common-git-commands.md) - 2024-08-12
+
 ### GitHub
 
 - [Adding alerts and notes to GitHub markdown](GitHub/alerts-and-notes-in-markdown.md) - 2024-08-11
 
 ### Python
 
+- [Comparing sequences is automatically element-by-element](Python/comparing-sequences.md) - 2024-08-12
 - [Doing nothing with `pass` and `Ellipsis`](Python/pass-and-ellipsis.md) - 2024-08-12
+- [Exceptions aren't always errors](Python/exceptions-not-always-errors.md) - 2024-08-12
 - [Python decorators (the @things before functions)](Python/decorators.md) - 2024-08-11
+- [Type hints are useful but not strictly enforced](Python/type-hints.md) - 2024-08-12
 <!-- index ends -->
