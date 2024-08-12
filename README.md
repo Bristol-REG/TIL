@@ -17,7 +17,7 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 
 <!-- toc starts -->
 - [Contributing TILs](#contributing-tils)
-- [Github](#github)
+- [GitHub](#github)
 - [Python](#python)
 <!-- toc ends -->
 
@@ -31,11 +31,12 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 - [How to preview the `README.md` locally](_contributing-TILs/preview-README.md) - 2024-08-11
 - [How to push/pull without conflicts](_contributing-TILs/avoiding-conflicts.md) - 2024-08-11
 
-### Github
+### GitHub
 
 - [Adding alerts and notes to GitHub markdown](GitHub/alerts-and-notes-in-markdown.md) - 2024-08-11
 
 ### Python
 
+- [Doing nothing with `pass` and `Ellipsis`](Python/pass-and-ellipsis.md) - 2024-08-12
 - [Python decorators (the @things before functions)](Python/decorators.md) - 2024-08-11
 <!-- index ends -->
