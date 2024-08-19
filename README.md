@@ -45,6 +45,7 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 - [Comparing sequences is automatically element-by-element](Python/comparing-sequences.md) - 2024-08-12
 - [Doing nothing with `pass` and `Ellipsis`](Python/pass-and-ellipsis.md) - 2024-08-12
 - [Exceptions aren't always errors](Python/exceptions-not-always-errors.md) - 2024-08-12
+- [Function arguments that can only be used a keywords, not positional arguments](Python/keyword-only-arguments.md) - 2024-08-19
 - [Progress bars for long-running loops or tasks](Python/progress-bars.md) - 2024-08-19
 - [Python decorators (the @things before functions)](Python/decorators.md) - 2024-08-11
 - [Rich console output, pretty printing and formatting](Python/rich-console-output.md) - 2024-08-19
