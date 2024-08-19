@@ -47,5 +47,6 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 - [Exceptions aren't always errors](Python/exceptions-not-always-errors.md) - 2024-08-12
 - [Progress bars for long-running loops or tasks](Python/progress-bars.md) - 2024-08-19
 - [Python decorators (the @things before functions)](Python/decorators.md) - 2024-08-11
+- [Rich console output, pretty printing and formatting](Python/rich-console-output.md) - 2024-08-19
 - [Type hints are useful but not strictly enforced](Python/type-hints.md) - 2024-08-12
 <!-- index ends -->
