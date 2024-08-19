@@ -40,6 +40,8 @@
 
 # Further help
 
+Julia Evans has put together a nice [Git Cheat Sheet](https://wizardzines.com/comics/git-cheat-sheet/).
+
 Also see: https://ohshitgit.com/
 
 Via: [Richard](https://github.com/richard-lane), [Léo](https://github.com/l-gorman) and [James](https://github.com/jatonline)
