@@ -32,3 +32,28 @@ inspect(my_list, methods=True)
 Via the [Rich GitHub repo](https://github.com/Textualize/rich):
 
 ![Example console output printed by `python -m rich`](https://raw.githubusercontent.com/textualize/rich/master/imgs/features.png)
+
+## Postscript
+
+[Richard](https://github.com/richard-lane) and [Matt](https://github.com/milliams) talked about how to use [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) to change things like colours yourself, if you didn't want to use a library.
+
+Richard's example:
+
+```python
+class bcolours(Enum):
+    HEADER = "\033[95m"
+    OKBLUE = "\033[94m"
+    OKCYAN = "\033[96m"
+    OKGREEN = "\033[92m"
+    WARNING = "\033[93m"
+    FAIL = "\033[91m"
+    ENDC = "\033[0m"
+    BOLD = "\033[1m"
+    UNDERLINE = "\033[4m"
+
+def coloured(string: str, colour: bcolours):
+    """Return a coloured string"""
+    return f"{colour.value}{string}{bcolours.ENDC.value}"
+
+warnings.warn(coloured("remember to change this", bcolours.WARNING))
+```
