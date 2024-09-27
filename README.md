@@ -1,6 +1,6 @@
 # Today I Learned
 
-This repo contains TILs from the team at the [Jean Golding Institute](https://www.bristol.ac.uk/golding/).
+This repo contains TILs from the team at the University of Bristol's [Research Engineering Group](https://jgibristol.github.io/REG/).
 
 > [!TIP]  
 > TIL stands for "today I learned". We constantly learn new things that would be useful for others (including our future self!) to see.
