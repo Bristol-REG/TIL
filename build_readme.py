@@ -7,7 +7,13 @@ start with an underscore (_) which are sorted to the top of the list.
 
 The README.md file is expected to have the following placeholders:
 
-    <!-- toc starts --><!-- toc ends --> <!-- index starts --><!-- index ends -->
+    <!-- toc starts -->
+    <!-- toc ends -->
+
+and
+
+    <!-- index starts -->
+    <!-- index ends -->
 
 If the README.md file does not exist, it will be created. If the placeholders for the table of
 contents and index of links do not exist, they will be added.
@@ -20,11 +26,14 @@ import datetime
 import re
 from collections import defaultdict
 from pathlib import Path
+from typing import Iterable
 
 import git
 
 
-def get_created_times(repo_path: str | Path, ref: str = "main") -> dict[str, datetime.date]:
+def get_created_times(
+    repo_path: str | Path, ref: str = "main"
+) -> dict[str, datetime.date]:
     """
     Get the first commit date for each file in the repository.
 
@@ -49,7 +58,7 @@ def get_created_times(repo_path: str | Path, ref: str = "main") -> dict[str, dat
 
 def get_by_topic(
     repo_path: str | Path, created_times: dict[str, datetime.date]
-) -> dict[str, dict[str, dict]]:
+) -> dict[tuple[str], dict[str, dict]]:
     """
     Build a dictionary of all the markdown files in the repository, with their title and created
     date, grouped by topic.
@@ -67,20 +76,31 @@ def get_by_topic(
     """
     by_topic = defaultdict(dict)
     for file in Path(repo_path).glob("*/**/*.md"):
-        if file.name == "README.md":
+        file = file.relative_to(repo_path)
+        if file.name == "README.md" or any(part.startswith(".") for part in file.parts):
             continue
-        path = file.relative_to(repo_path)
-        topic = deslugify(path.parts[0])
+        topic = deslugify(file.parts[0:-1])
         with file.open() as f:
-            title = f.readline().lstrip("#").strip() or deslugify(path.stem)
-        by_topic[topic][path] = {
+            title = f.readline().lstrip("#").strip() or deslugify(file.stem)
+        by_topic[topic][file] = {
             "title": title,
-            "created": created_times.get(str(path)),
+            "created": created_times.get(str(file)),
         }
+
+    # Ensure that all intermediate topics are present
+    # e.g. if there is by_topic[Path('One')]
+    #              and by_topic[Path('One/Two/Three')]
+    # then also create by_topic[Path('One/Two')]
+    intermediate_topics = {
+        topic[:i] for topic in by_topic.keys() for i in range(1, len(topic))
+    }
+    for topic in intermediate_topics:
+        by_topic.setdefault(topic, {})
+
     return by_topic
 
 
-def render_toc(by_topic: dict[str, dict[str, dict]]) -> str:
+def render_toc(by_topic: dict[tuple[str], dict[str, dict]]) -> str:
     """
     Render a table of contents for the README.md file, with bookmark links to each topic.
 
@@ -96,14 +116,16 @@ def render_toc(by_topic: dict[str, dict[str, dict]]) -> str:
         The markdown for the table of contents.
     """
     index = []
-    for topic in sorted(by_topic):  # Topics starting with an underscore (_) are sorted first
-        topic = topic.lstrip("_")
-        bookmark = topic.lower().replace(" ", "-")
-        index.append(f"- [{topic}](#{bookmark})")
+    for topic in sorted(by_topic):
+        # Topics starting with an underscore (_) are sorted first
+        name = topic[-1].lstrip("_")
+        bookmark = get_bookmark(topic)
+        indent_depth = "    " * (len(topic) - 1)
+        index.append(f"{indent_depth}- [{name}](#{bookmark})")
     return "\n".join(index).strip()
 
 
-def render_index(by_topic: dict[str, dict[str, dict]]) -> str:
+def render_index(by_topic: dict[tuple[str], dict[str, dict]]) -> str:
     """
     Render an index of links to each markdown file in the repository, grouped by topic.
 
@@ -125,8 +147,11 @@ def render_index(by_topic: dict[str, dict[str, dict]]) -> str:
         return -path.stem.startswith("_"), info["title"]
 
     for topic, files in sorted(by_topic.items()):
-        topic = topic.lstrip("_")  # Topics starting with an underscore (_) are sorted first
-        toc.append(f"### {topic}\n")
+        # Topics starting with an underscore (_) are sorted first
+        name = topic[-1].lstrip("_")
+        bookmark = get_bookmark(topic)
+        heading_level = "#" * (len(topic) + 2)
+        toc.append(f'{heading_level} {name} <a id="{bookmark}"></a>\n')
         for path, info in sorted(files.items(), key=sort_by_sticky_then_title):
             list_item = f"- [{info['title']}]({path})"
             if info["created"]:
@@ -136,7 +161,9 @@ def render_index(by_topic: dict[str, dict[str, dict]]) -> str:
     return "\n".join(toc).strip()
 
 
-def update_readme(repo_path: str | Path, toc_markdown: str, index_markdown: str) -> None:
+def update_readme(
+    repo_path: str | Path, toc_markdown: str, index_markdown: str
+) -> None:
     """
     Update the README.md file at the root of the repository with a table of contents and index of
     links.
@@ -158,8 +185,12 @@ def update_readme(repo_path: str | Path, toc_markdown: str, index_markdown: str)
     readme_path.touch()
     readme_content = readme_path.read_text()
 
-    toc_pattern = re.compile(r"<!\-\- toc starts \-\->.*<!\-\- toc ends \-\->", re.DOTALL)
-    index_pattern = re.compile(r"<!\-\- index starts \-\->.*<!\-\- index ends \-\->", re.DOTALL)
+    toc_pattern = re.compile(
+        r"<!\-\- toc starts \-\->.*<!\-\- toc ends \-\->", re.DOTALL
+    )
+    index_pattern = re.compile(
+        r"<!\-\- index starts \-\->.*<!\-\- index ends \-\->", re.DOTALL
+    )
 
     toc_markdown = f"<!-- toc starts -->\n{toc_markdown}\n<!-- toc ends -->"
     index_markdown = f"<!-- index starts -->\n{index_markdown}\n<!-- index ends -->"
@@ -177,18 +208,34 @@ def update_readme(repo_path: str | Path, toc_markdown: str, index_markdown: str)
     readme_path.write_text(readme_content)
 
 
-def deslugify(slug: str) -> str:
+def deslugify(slugs: Iterable[str]) -> tuple[str]:
     """
-    Convert a slug to a human-readable title.
+    Convert slugs to human-readable titles.
 
     Args:
-        slug: The slug to convert.
+        slugs: The slugs to convert.
 
     Returns:
-        The human-readable title.
+        The human-readable titles.
     """
-    slug = slug.replace("-", " ").replace("_", " ").strip()
-    return slug[:1].upper() + slug[1:]  # Capitalise the first letter and leave the rest as-is
+    titles = []
+    for slug in slugs:
+        title = slug.replace("-", " ").replace("_", " ").strip()
+        title = (
+            title[:1].upper() + title[1:]
+        )  # Capitalise the first letter and leave the rest as-is
+        titles.append(title)
+    return tuple(titles)
+
+
+def get_bookmark(topic: tuple[str]) -> str:
+    """
+    Generate a valid HTML link hash (or bookmark) from a topic tuple.
+    """
+    return "--".join(
+        part.lstrip("_").lower().replace(" ", "-").replace("'", "").replace('"', "")
+        for part in topic
+    )
 
 
 if __name__ == "__main__":
