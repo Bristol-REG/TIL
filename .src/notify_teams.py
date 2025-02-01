@@ -121,7 +121,7 @@ def deslugify(slug: str) -> str:
 
 if __name__ == "__main__":
     added_files = get_added_files(
-        repo_path=Path(__file__).parent, commit1=sys.argv[1], commit2=sys.argv[2]
+        repo_path=Path(__file__).parent.parent, commit1=sys.argv[1], commit2=sys.argv[2]
     )
     if added_files:
         payload = prepare_json(

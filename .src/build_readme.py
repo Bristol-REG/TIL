@@ -239,7 +239,7 @@ def get_bookmark(topic: tuple[str]) -> str:
 
 
 if __name__ == "__main__":
-    repo_path = Path(__file__).parent.resolve()
+    repo_path = Path(__file__).parent.parent.resolve()
     times = get_created_times(repo_path)
     by_topic = get_by_topic(repo_path, times)
     toc = render_toc(by_topic)
