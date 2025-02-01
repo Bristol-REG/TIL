@@ -25,22 +25,22 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 ## Index
 
 <!-- index starts -->
-### Contributing TILs
+### Contributing TILs <a id="contributing-tils"></a>
 
 - [How to contribute a TIL](_contributing-TILs/_how-to-contribute.md) - 2024-08-11
 - [How to commit and push without GitHub Actions from running](_contributing-TILs/prevent-GitHub-actions.md) - 2024-08-11
 - [How to preview the `README.md` locally](_contributing-TILs/preview-README.md) - 2024-08-11
 - [How to push/pull without conflicts](_contributing-TILs/avoiding-conflicts.md) - 2024-08-11
 
-### Git
+### Git <a id="git"></a>
 
 - [Commonly used commands in Git](Git/common-git-commands.md) - 2024-08-12
 
-### GitHub
+### GitHub <a id="github"></a>
 
 - [Adding alerts and notes to GitHub markdown](GitHub/alerts-and-notes-in-markdown.md) - 2024-08-11
 
-### Python
+### Python <a id="python"></a>
 
 - [Comparing sequences is automatically element-by-element](Python/comparing-sequences.md) - 2024-08-12
 - [Doing nothing with `pass` and `Ellipsis`](Python/pass-and-ellipsis.md) - 2024-08-12
