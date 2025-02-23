@@ -1,6 +1,6 @@
 # Today I Learned
 
-This repo contains TILs from the team at the University of Bristol's [Research Engineering Group](https://jgibristol.github.io/REG/).
+This repo contains TILs from the team at the University of Bristol's [Research Engineering Group](https://bristol-reg.github.io).
 
 > [!TIP]  
 > TIL stands for "today I learned". We constantly learn new things that would be useful for others (including our future self!) to see.
