@@ -20,6 +20,7 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 - [Git](#git)
 - [GitHub](#github)
 - [Python](#python)
+- [Statistics](#statistics)
 <!-- toc ends -->
 
 ## Index
@@ -51,4 +52,8 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 - [Rich console output, pretty printing and formatting](Python/rich-console-output.md) - 2024-08-19
 - [Small Integer Caching](Python/small-integer-caching.md) - 2024-08-28
 - [Type hints are useful but not strictly enforced](Python/type-hints.md) - 2024-08-12
+
+### Statistics <a id="statistics"></a>
+
+- [Truncated/Censored Modelling](Statistics/truncated_censored_modelling.md) - 2025-04-08
 <!-- index ends -->
