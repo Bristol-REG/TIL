@@ -20,6 +20,7 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 - [Git](#git)
 - [GitHub](#github)
 - [Python](#python)
+    - [Geospatial](#python--geospatial)
 - [Statistics](#statistics)
 <!-- toc ends -->
 
@@ -52,6 +53,10 @@ This repo uses a [Python script](build_readme.py), triggered by GitHub Actions, 
 - [Rich console output, pretty printing and formatting](Python/rich-console-output.md) - 2024-08-19
 - [Small Integer Caching](Python/small-integer-caching.md) - 2024-08-28
 - [Type hints are useful but not strictly enforced](Python/type-hints.md) - 2024-08-12
+
+#### Geospatial <a id="python--geospatial"></a>
+
+- [Prevent Folium/Leaflet maps from zooming when you scroll past](Python/Geospatial/folium-leaflet-map-zooming.md) - 2026-03-02
 
 ### Statistics <a id="statistics"></a>
 
